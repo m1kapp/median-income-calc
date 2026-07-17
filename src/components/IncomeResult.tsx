@@ -1,4 +1,4 @@
-import { Badge, Button, Divider, Section, SectionHeader, StatChip } from "@m1kapp/kit";
+import { Badge, Button, Divider, ProgressRing, Section, SectionHeader } from "@m1kapp/kit";
 import { 급여기준 } from "../data/incomeStandards2026";
 
 export interface IncomeResultProps {
@@ -17,9 +17,19 @@ export function IncomeResult({ wage, medianPct, avgPct, onBack }: IncomeResultPr
           <div className="mt-1 text-2xl font-bold text-zinc-900 dark:text-zinc-100">{wage.toLocaleString()}원</div>
         </div>
 
-        <div className="mt-3 flex gap-3">
-          <StatChip label="기준 중위소득 대비 (%)" value={medianPct} />
-          <StatChip label="도시근로자 월평균소득 대비 (%)" value={avgPct} />
+        <div className="mt-4 flex justify-center gap-8">
+          <div className="flex flex-col items-center gap-1.5">
+            <ProgressRing value={Math.min(medianPct, 100)} max={100} size={88}>
+              <span className="text-base font-black text-zinc-900 dark:text-zinc-100">{medianPct}%</span>
+            </ProgressRing>
+            <span className="text-[11px] text-zinc-500 dark:text-zinc-400 text-center">기준 중위소득 대비</span>
+          </div>
+          <div className="flex flex-col items-center gap-1.5">
+            <ProgressRing value={Math.min(avgPct, 100)} max={100} size={88}>
+              <span className="text-base font-black text-zinc-900 dark:text-zinc-100">{avgPct}%</span>
+            </ProgressRing>
+            <span className="text-[11px] text-zinc-500 dark:text-zinc-400 text-center">도시근로자<br />월평균소득 대비</span>
+          </div>
         </div>
       </Section>
 
