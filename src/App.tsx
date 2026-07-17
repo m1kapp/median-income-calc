@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { AppShell, AppShellHeader, AppShellContent, ToastProvider, useToast } from "@m1kapp/kit";
-
-const ACCENT = "#2563eb";
+import { AppShell, AppShellHeader, AppShellContent, PoweredByKit, ToastProvider, useToast } from "@m1kapp/kit";
 import { IncomeInputForm } from "./components/IncomeInputForm";
 import { IncomeResult } from "./components/IncomeResult";
 import { avgWorkerIncomeRatio, combineDualIncome, feeToMonthlyWage, medianIncomeRatio } from "./lib/incomeCalc";
+
+const ACCENT = "#2563eb";
 
 interface Result {
   wage: number;
@@ -75,6 +75,7 @@ function CalculatorShell() {
           />
         )}
       </AppShellContent>
+      <PoweredByKit />
     </AppShell>
   );
 }
