@@ -5,6 +5,8 @@ import { IncomeResult } from "./components/IncomeResult";
 import { avgWorkerIncomeRatio, combineDualIncome, feeToMonthlyWage, medianIncomeRatio } from "./lib/incomeCalc";
 
 const ACCENT = "#2563eb";
+// npx m1kkit track https://income.m1k.app 로 발급받은 slug (Vite라 NEXT_PUBLIC_M1K_SLUG env는 안 먹음 — 직접 prop으로)
+const TRACK_SLUG = "gu";
 
 interface Result {
   wage: number;
@@ -14,7 +16,7 @@ interface Result {
 
 function Calculator() {
   return (
-    <Watermark color={ACCENT} text="calc">
+    <Watermark color={ACCENT} text="calc" trackSlug={TRACK_SLUG}>
       <CalculatorShell />
     </Watermark>
   );
