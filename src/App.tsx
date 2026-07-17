@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AppShell, AppShellHeader, AppShellContent, PoweredByKit, ToastProvider, useToast } from "@m1kapp/kit";
+import { AppShell, AppShellHeader, AppShellContent, ToastProvider, useToast, Watermark } from "@m1kapp/kit";
 import { IncomeInputForm } from "./components/IncomeInputForm";
 import { IncomeResult } from "./components/IncomeResult";
 import { avgWorkerIncomeRatio, combineDualIncome, feeToMonthlyWage, medianIncomeRatio } from "./lib/incomeCalc";
@@ -14,9 +14,9 @@ interface Result {
 
 function Calculator() {
   return (
-    <div className="h-dvh w-full flex items-center justify-center bg-zinc-100">
+    <Watermark color={ACCENT} text="calc">
       <CalculatorShell />
-    </div>
+    </Watermark>
   );
 }
 
@@ -75,7 +75,6 @@ function CalculatorShell() {
           />
         )}
       </AppShellContent>
-      <PoweredByKit />
     </AppShell>
   );
 }
