@@ -9,16 +9,23 @@ export interface IncomeResultProps {
   avgPct: number;
   householdSize: number;
   year: IncomeYear;
+  capNote: "min" | "max" | null;
   onBack: () => void;
 }
 
-export function IncomeResult({ wage, medianPct, avgPct, householdSize, year, onBack }: IncomeResultProps) {
+export function IncomeResult({ wage, medianPct, avgPct, householdSize, year, capNote, onBack }: IncomeResultProps) {
   return (
     <>
       <Section className="pt-4">
         <div className="rounded-2xl bg-zinc-50 dark:bg-zinc-800/60 p-5 text-center">
           <div className="text-[13px] text-zinc-500 dark:text-zinc-400">추정 보수월액</div>
           <div className="mt-1 text-2xl font-bold text-zinc-900 dark:text-zinc-100">{wage.toLocaleString()}원</div>
+          {capNote && (
+            <div className="mt-1.5 text-[11px] text-amber-600 dark:text-amber-400">
+              국민연금 기준소득월액 {capNote === "max" ? "상한" : "하한"}에 걸려있어요 — 실제 소득은 이보다{" "}
+              {capNote === "max" ? "높을" : "낮을"} 수 있어요
+            </div>
+          )}
         </div>
 
         <div className="mt-4 flex justify-center gap-8">

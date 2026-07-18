@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { AppShell, AppShellHeader, AppShellContent, ToastProvider, useToast, Watermark } from "@m1kapp/kit";
-import { IncomeInputForm } from "./components/IncomeInputForm";
+import { IncomeInputForm, type InputMethod } from "./components/IncomeInputForm";
 import { IncomeResult } from "./components/IncomeResult";
 import { avgWorkerIncomeRatio, combineDualIncome, feeToMonthlyWage, medianIncomeRatio } from "./lib/incomeCalc";
+import { pensionFeeToWage } from "./data/pension";
 import { LATEST_YEAR, type IncomeYear } from "./data/incomeStandards";
 
 const ACCENT = "#2563eb";
@@ -13,6 +14,7 @@ interface Result {
   wage: number;
   medianPct: number;
   avgPct: number;
+  capNote: "min" | "max" | null;
 }
 
 function Calculator() {
@@ -27,6 +29,7 @@ function CalculatorShell() {
   const toast = useToast();
   const [householdSize, setHouseholdSize] = useState(1);
   const [year, setYear] = useState<IncomeYear>(LATEST_YEAR);
+  const [method, setMethod] = useState<InputMethod>("health");
   const [fee1, setFee1] = useState("");
   const [fee2, setFee2] = useState("");
   const [dual, setDual] = useState(false);
@@ -35,23 +38,26 @@ function CalculatorShell() {
   function handleCalculate() {
     const fee1Num = Number(fee1);
     const fee2Num = Number(fee2);
+    const label = method === "health" ? "건강보험료" : "국민연금 보험료";
 
-    if (!fee1 || isNaN(fee1Num) || fee1Num < 10000 || fee1Num > 1_000_000) {
-      toast("비정상적인 건강보험료 금액입니다!", { variant: "error" });
+    if (!fee1 || isNaN(fee1Num) || fee1Num < 5000 || fee1Num > 1_000_000) {
+      toast(`비정상적인 ${label} 금액입니다!`, { variant: "error" });
       return;
     }
-    if (dual && (!fee2 || isNaN(fee2Num) || fee2Num < 10000 || fee2Num > 1_000_000)) {
-      toast("비정상적인 배우자 건강보험료 금액입니다!", { variant: "error" });
+    if (dual && (!fee2 || isNaN(fee2Num) || fee2Num < 5000 || fee2Num > 1_000_000)) {
+      toast(`비정상적인 배우자 ${label} 금액입니다!`, { variant: "error" });
       return;
     }
 
     const combined = dual ? combineDualIncome(fee1Num, fee2Num) : fee1Num;
-    const wage = feeToMonthlyWage(combined);
+    const wage = method === "health" ? feeToMonthlyWage(combined) : pensionFeeToWage(combined).wage;
+    const capNote = method === "pension" ? pensionFeeToWage(combined).capped : null;
 
     setResult({
       wage,
-      medianPct: medianIncomeRatio(combined, householdSize, year),
+      medianPct: medianIncomeRatio(wage, householdSize, year),
       avgPct: avgWorkerIncomeRatio(wage, householdSize),
+      capNote,
     });
   }
 
@@ -71,6 +77,8 @@ function CalculatorShell() {
             onHouseholdSizeChange={setHouseholdSize}
             year={year}
             onYearChange={setYear}
+            method={method}
+            onMethodChange={setMethod}
             fee1={fee1}
             onFee1Change={setFee1}
             fee2={fee2}

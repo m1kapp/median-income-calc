@@ -8,9 +8,9 @@ export function feeToMonthlyWage(fee: number): number {
   return Math.round(fee / (건강보험료율 / 100));
 }
 
-export function medianIncomeRatio(fee: number, householdSize: number, year: IncomeYear = LATEST_YEAR): number {
-  const base = 기준중위소득[year][householdSize - 1] * (건강보험료율 / 100);
-  return Math.round((fee / base) * 1000) / 10;
+export function medianIncomeRatio(wage: number, householdSize: number, year: IncomeYear = LATEST_YEAR): number {
+  const base = 기준중위소득[year][householdSize - 1];
+  return Math.round((wage / base) * 1000) / 10;
 }
 
 export function avgWorkerIncomeRatio(wage: number, householdSize: number): number {
