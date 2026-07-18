@@ -1,0 +1,233 @@
+{
+  "generatedAt": "2026-07-18T02:14:02.676Z",
+  "kitVersion": "0.0.33",
+  "source": {
+    "dir": "src",
+    "files": 7,
+    "totalLines": 375,
+    "codeLines": 320,
+    "breakdown": {
+      "frontend": {
+        "files": 5,
+        "codeLines": 276
+      },
+      "backend": {
+        "files": 0,
+        "codeLines": 0
+      },
+      "shared": {
+        "files": 2,
+        "codeLines": 44
+      }
+    }
+  },
+  "quality": {
+    "engine": "ast2",
+    "score": 92,
+    "grade": "A+",
+    "cognitive": {
+      "avg": 0.7,
+      "p90": 4,
+      "max": 6,
+      "over15": 0,
+      "over25": 0,
+      "worst": [
+        {
+          "name": "handleCalculate",
+          "cog": 6,
+          "cc": 11,
+          "file": "src/App.tsx",
+          "line": 33
+        },
+        {
+          "name": "IncomeInputForm",
+          "cog": 4,
+          "cc": 5,
+          "file": "src/components/IncomeInputForm.tsx",
+          "line": 21
+        },
+        {
+          "name": "(anonymous)",
+          "cog": 2,
+          "cc": 3,
+          "file": "src/components/IncomeResult.tsx",
+          "line": 41
+        },
+        {
+          "name": "CalculatorShell",
+          "cog": 1,
+          "cc": 2,
+          "file": "src/App.tsx",
+          "line": 25
+        },
+        {
+          "name": "combineDualIncome",
+          "cog": 1,
+          "cc": 2,
+          "file": "src/lib/incomeCalc.ts",
+          "line": 3
+        }
+      ]
+    },
+    "duplication": {
+      "percent": 6.1,
+      "dupTokens": 110,
+      "totalTokens": 1804,
+      "blocks": 6,
+      "worstFiles": [
+        {
+          "file": "src/components/IncomeResult.tsx",
+          "dupTokens": 110
+        }
+      ],
+      "worstBlocks": [
+        [
+          "src/components/IncomeResult.tsx:20",
+          "src/components/IncomeResult.tsx:26"
+        ],
+        [
+          "src/components/IncomeResult.tsx:21",
+          "src/components/IncomeResult.tsx:27"
+        ],
+        [
+          "src/components/IncomeResult.tsx:21",
+          "src/components/IncomeResult.tsx:27"
+        ]
+      ]
+    },
+    "cc": {
+      "functions": 20,
+      "avg": 1.9,
+      "p90": 5,
+      "max": 11,
+      "over10": 1,
+      "over20": 0,
+      "worst": [
+        {
+          "name": "handleCalculate",
+          "cc": 11,
+          "file": "src/App.tsx",
+          "line": 33
+        },
+        {
+          "name": "IncomeInputForm",
+          "cc": 5,
+          "file": "src/components/IncomeInputForm.tsx",
+          "line": 21
+        },
+        {
+          "name": "(anonymous)",
+          "cc": 3,
+          "file": "src/components/IncomeResult.tsx",
+          "line": 41
+        },
+        {
+          "name": "CalculatorShell",
+          "cc": 2,
+          "file": "src/App.tsx",
+          "line": 25
+        },
+        {
+          "name": "combineDualIncome",
+          "cc": 2,
+          "file": "src/lib/incomeCalc.ts",
+          "line": 3
+        }
+      ]
+    },
+    "branchDensity": 5.9,
+    "branches": 19,
+    "functions": 27,
+    "avgFileLines": 46,
+    "longFiles": 0,
+    "maxFile": {
+      "path": "src/components/IncomeInputForm.tsx",
+      "lines": 100
+    }
+  },
+  "kit": {
+    "features": [
+      {
+        "name": "Watermark",
+        "loc": 188,
+        "category": "component"
+      },
+      {
+        "name": "InAppSheet",
+        "loc": 175,
+        "category": "component"
+      },
+      {
+        "name": "ToastProvider",
+        "loc": 93,
+        "category": "component"
+      },
+      {
+        "name": "AppShell",
+        "loc": 76,
+        "category": "component"
+      },
+      {
+        "name": "Field",
+        "loc": 67,
+        "category": "component"
+      },
+      {
+        "name": "Button",
+        "loc": 61,
+        "category": "component"
+      },
+      {
+        "name": "ProgressRing",
+        "loc": 50,
+        "category": "component"
+      },
+      {
+        "name": "SegmentedControl",
+        "loc": 49,
+        "category": "component"
+      },
+      {
+        "name": "Switch",
+        "loc": 40,
+        "category": "component"
+      },
+      {
+        "name": "Badge",
+        "loc": 35,
+        "category": "component"
+      },
+      {
+        "name": "Divider",
+        "loc": 18,
+        "category": "component"
+      },
+      {
+        "name": "Section",
+        "loc": 17,
+        "category": "component"
+      }
+    ],
+    "savedLines": 869,
+    "savedKB": 34,
+    "savedA4": 11,
+    "savedPercent": 73,
+    "usage": {
+      "component": {
+        "used": 15,
+        "total": 59,
+        "percent": 25
+      },
+      "hook": {
+        "used": 1,
+        "total": 13,
+        "percent": 8
+      },
+      "util": {
+        "used": 0,
+        "total": 26,
+        "percent": 0
+      }
+    }
+  }
+}
