@@ -4,8 +4,8 @@ export function combineDualIncome(feeA: number, feeB: number): number {
   return feeA > feeB ? feeA + feeB / 2 : feeB + feeA / 2;
 }
 
-export function feeToMonthlyWage(fee: number): number {
-  return Math.round(fee / (건강보험료율 / 100));
+export function feeToMonthlyWage(fee: number, year: IncomeYear = LATEST_YEAR): number {
+  return Math.round(fee / (건강보험료율[year] / 100));
 }
 
 export function medianIncomeRatio(wage: number, householdSize: number, year: IncomeYear = LATEST_YEAR): number {
@@ -13,12 +13,12 @@ export function medianIncomeRatio(wage: number, householdSize: number, year: Inc
   return Math.round((wage / base) * 1000) / 10;
 }
 
-export function avgWorkerIncomeRatio(wage: number, householdSize: number): number {
-  const base = 도시근로자월평균소득[householdSize - 1];
+export function avgWorkerIncomeRatio(wage: number, householdSize: number, year: IncomeYear = LATEST_YEAR): number {
+  const base = 도시근로자월평균소득[year][householdSize - 1];
   return Math.round((wage / base) * 1000) / 10;
 }
 
 export function feeForMedianPercent(pct: number, householdSize: number, year: IncomeYear = LATEST_YEAR): number {
-  const base = 기준중위소득[year][householdSize - 1] * (건강보험료율 / 100);
+  const base = 기준중위소득[year][householdSize - 1] * (건강보험료율[year] / 100);
   return Math.round(base * (pct / 100));
 }

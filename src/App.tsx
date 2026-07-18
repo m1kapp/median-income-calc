@@ -50,13 +50,13 @@ function CalculatorShell() {
     }
 
     const combined = dual ? combineDualIncome(fee1Num, fee2Num) : fee1Num;
-    const wage = method === "health" ? feeToMonthlyWage(combined) : pensionFeeToWage(combined).wage;
+    const wage = method === "health" ? feeToMonthlyWage(combined, year) : pensionFeeToWage(combined).wage;
     const capNote = method === "pension" ? pensionFeeToWage(combined).capped : null;
 
     setResult({
       wage,
       medianPct: medianIncomeRatio(wage, householdSize, year),
-      avgPct: avgWorkerIncomeRatio(wage, householdSize),
+      avgPct: avgWorkerIncomeRatio(wage, householdSize, year),
       capNote,
     });
   }

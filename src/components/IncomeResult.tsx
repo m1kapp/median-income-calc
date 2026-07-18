@@ -39,7 +39,7 @@ export function IncomeResult({ wage, medianPct, avgPct, householdSize, year, cap
             <ProgressRing value={Math.min(avgPct, 100)} max={100} size={88}>
               <span className="text-base font-black text-zinc-900 dark:text-zinc-100">{avgPct}%</span>
             </ProgressRing>
-            <span className="text-[11px] text-zinc-500 dark:text-zinc-400 text-center">도시근로자<br />월평균소득 대비</span>
+            <span className="text-[11px] text-zinc-500 dark:text-zinc-400 text-center">{year}년 도시근로자<br />월평균소득 대비</span>
           </div>
         </div>
       </Section>
