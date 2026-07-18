@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Button, Divider, Field, Section, SectionHeader, SegmentedControl, Switch } from "@m1kapp/kit";
 import { feeForMedianPercent } from "../lib/incomeCalc";
+import { YEARS, type IncomeYear } from "../data/incomeStandards";
 import { IncomeHelpSheet } from "./IncomeHelpSheet";
 
 export interface IncomeInputFormProps {
   householdSize: number;
   onHouseholdSizeChange: (size: number) => void;
+  year: IncomeYear;
+  onYearChange: (year: IncomeYear) => void;
   fee1: string;
   onFee1Change: (v: string) => void;
   fee2: string;
@@ -15,12 +18,15 @@ export interface IncomeInputFormProps {
   onCalculate: () => void;
 }
 
-const HOUSEHOLD_OPTIONS = [1, 2, 3, 4, 5, 6, 7].map((n) => ({ value: String(n), label: n }));
+const HOUSEHOLD_SIZES = [1, 2, 3, 4, 5, 6, 7];
+const YEAR_OPTIONS = YEARS.map((y) => ({ value: String(y), label: `'${String(y).slice(2)}` }));
 const PRESETS = [100, 150, 180];
 
 export function IncomeInputForm({
   householdSize,
   onHouseholdSizeChange,
+  year,
+  onYearChange,
   fee1,
   onFee1Change,
   fee2,
@@ -34,12 +40,50 @@ export function IncomeInputForm({
   return (
     <>
       <Section className="pt-4">
-        <SectionHeader>가족구성원</SectionHeader>
-        <SegmentedControl
-          options={HOUSEHOLD_OPTIONS}
-          value={String(householdSize)}
-          onChange={(v) => onHouseholdSizeChange(Number(v))}
-        />
+        <div className="flex items-center justify-between -mt-0.5 mb-2">
+          <SectionHeader>가족구성원</SectionHeader>
+          <div className="w-[128px] -mt-3">
+            <SegmentedControl
+              options={YEAR_OPTIONS}
+              value={String(year)}
+              onChange={(v) => onYearChange(Number(v) as IncomeYear)}
+            />
+          </div>
+        </div>
+
+        <div className="flex justify-between gap-1">
+          {HOUSEHOLD_SIZES.map((n) => {
+            const active = n === householdSize;
+            return (
+              <button
+                key={n}
+                type="button"
+                aria-pressed={active}
+                aria-label={`${n}인 가구`}
+                onClick={() => onHouseholdSizeChange(n)}
+                className="flex flex-1 flex-col items-center gap-1"
+              >
+                <div
+                  className={`flex h-11 w-11 items-center justify-center rounded-full text-[17px] font-black transition-all duration-150 ${
+                    active
+                      ? "text-white shadow-md scale-110"
+                      : "bg-zinc-100 text-zinc-400 dark:bg-zinc-800 dark:text-zinc-500"
+                  }`}
+                  style={active ? { backgroundColor: "var(--kit-accent)" } : undefined}
+                >
+                  {n}
+                </div>
+                <span
+                  className={`text-[10px] font-semibold transition-colors ${
+                    active ? "text-zinc-900 dark:text-zinc-100" : "text-zinc-400 dark:text-zinc-500"
+                  }`}
+                >
+                  인
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </Section>
 
       <Divider spacing="sm" />
@@ -93,7 +137,7 @@ export function IncomeInputForm({
                 variant="light"
                 full
                 className="!px-2 !py-1.5 text-[13px]"
-                onClick={() => onFee1Change(String(feeForMedianPercent(pct, householdSize)))}
+                onClick={() => onFee1Change(String(feeForMedianPercent(pct, householdSize, year)))}
               >
                 #중위소득{pct}
               </Button>
