@@ -3,6 +3,7 @@ import { AppShell, AppShellHeader, AppShellContent, ToastProvider, useToast, Wat
 import { IncomeInputForm } from "./components/IncomeInputForm";
 import { IncomeResult } from "./components/IncomeResult";
 import { avgWorkerIncomeRatio, combineDualIncome, feeToMonthlyWage, medianIncomeRatio } from "./lib/incomeCalc";
+import { LATEST_YEAR, type IncomeYear } from "./data/incomeStandards";
 
 const ACCENT = "#2563eb";
 // npx m1kkit track https://income.m1k.app 로 발급받은 slug (Vite라 NEXT_PUBLIC_M1K_SLUG env는 안 먹음 — 직접 prop으로)
@@ -25,6 +26,7 @@ function Calculator() {
 function CalculatorShell() {
   const toast = useToast();
   const [householdSize, setHouseholdSize] = useState(1);
+  const [year, setYear] = useState<IncomeYear>(LATEST_YEAR);
   const [fee1, setFee1] = useState("");
   const [fee2, setFee2] = useState("");
   const [dual, setDual] = useState(false);
@@ -48,7 +50,7 @@ function CalculatorShell() {
 
     setResult({
       wage,
-      medianPct: medianIncomeRatio(combined, householdSize),
+      medianPct: medianIncomeRatio(combined, householdSize, year),
       avgPct: avgWorkerIncomeRatio(wage, householdSize),
     });
   }
@@ -62,11 +64,13 @@ function CalculatorShell() {
       </AppShellHeader>
       <AppShellContent>
         {result ? (
-          <IncomeResult {...result} onBack={() => setResult(null)} />
+          <IncomeResult {...result} householdSize={householdSize} year={year} onBack={() => setResult(null)} />
         ) : (
           <IncomeInputForm
             householdSize={householdSize}
             onHouseholdSizeChange={setHouseholdSize}
+            year={year}
+            onYearChange={setYear}
             fee1={fee1}
             onFee1Change={setFee1}
             fee2={fee2}

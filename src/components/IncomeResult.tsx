@@ -1,14 +1,18 @@
 import { Badge, Button, Divider, ProgressRing, Section, SectionHeader } from "@m1kapp/kit";
-import { 급여기준 } from "../data/incomeStandards2026";
+import { 급여기준 } from "../data/incomeStandards";
+import type { IncomeYear } from "../data/incomeStandards";
+import { IncomeYearChart } from "./IncomeYearChart";
 
 export interface IncomeResultProps {
   wage: number;
   medianPct: number;
   avgPct: number;
+  householdSize: number;
+  year: IncomeYear;
   onBack: () => void;
 }
 
-export function IncomeResult({ wage, medianPct, avgPct, onBack }: IncomeResultProps) {
+export function IncomeResult({ wage, medianPct, avgPct, householdSize, year, onBack }: IncomeResultProps) {
   return (
     <>
       <Section className="pt-4">
@@ -22,7 +26,7 @@ export function IncomeResult({ wage, medianPct, avgPct, onBack }: IncomeResultPr
             <ProgressRing value={Math.min(medianPct, 100)} max={100} size={88}>
               <span className="text-base font-black text-zinc-900 dark:text-zinc-100">{medianPct}%</span>
             </ProgressRing>
-            <span className="text-[11px] text-zinc-500 dark:text-zinc-400 text-center">기준 중위소득 대비</span>
+            <span className="text-[11px] text-zinc-500 dark:text-zinc-400 text-center">{year}년 기준 중위소득 대비</span>
           </div>
           <div className="flex flex-col items-center gap-1.5">
             <ProgressRing value={Math.min(avgPct, 100)} max={100} size={88}>
@@ -30,6 +34,15 @@ export function IncomeResult({ wage, medianPct, avgPct, onBack }: IncomeResultPr
             </ProgressRing>
             <span className="text-[11px] text-zinc-500 dark:text-zinc-400 text-center">도시근로자<br />월평균소득 대비</span>
           </div>
+        </div>
+      </Section>
+
+      <Divider spacing="sm" />
+
+      <Section>
+        <SectionHeader>{householdSize}인 가구 기준 중위소득 추이</SectionHeader>
+        <div className="rounded-2xl bg-zinc-50 dark:bg-zinc-800/60 px-3 pt-3">
+          <IncomeYearChart householdSize={householdSize} year={year} wage={wage} />
         </div>
       </Section>
 
