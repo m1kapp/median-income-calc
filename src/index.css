@@ -18,3 +18,9 @@ body {
     display: none;
   }
 }
+
+/* kit Select 트리거 버튼은 px-3.5 py-2.5가 컴포넌트 내부에 박혀있어 className으로
+   못 줄임(외곽 div에만 적용됨) — 헤더용으로 좁게 쓰려고 강제 오버라이드 */
+.year-select-compact > button {
+  padding: 0.3125rem 0.5rem !important;
+}
