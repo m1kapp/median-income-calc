@@ -3,6 +3,7 @@ import { Section, SectionHeader, SegmentedControl } from "@m1kapp/kit";
 import { ExternalLink } from "lucide-react";
 import { 기준중위소득, 도시근로자월평균소득, type IncomeYear } from "../data/incomeStandards";
 import { WELFARE_PROGRAMS, type WelfareProgram } from "../data/welfarePrograms";
+import { won } from "../lib/format";
 import { HouseholdSizePicker } from "./HouseholdSizePicker";
 
 export interface WelfareProgramsSectionProps {
@@ -25,10 +26,6 @@ const SCOPE_LABEL: Record<WelfareProgram["scope"], string> = {
 
 // 프로그램마다 정확한 법령 시행일자까진 검증 못 해서, 대신 이 데이터를 언제 확인했는지 표시
 const DATA_CHECKED_ON = "2026.07.19";
-
-function won(n: number): string {
-  return `${Math.round(n).toLocaleString()}원`;
-}
 
 function ProgramCard({ p, base }: { p: WelfareProgram; base: number }) {
   return (

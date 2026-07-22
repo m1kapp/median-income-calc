@@ -1,160 +1,168 @@
 {
-  "generatedAt": "2026-07-18T02:14:02.676Z",
-  "kitVersion": "0.0.33",
+  "generatedAt": "2026-07-22T14:12:26.785Z",
+  "kitVersion": "0.0.37",
   "source": {
     "dir": "src",
-    "files": 7,
-    "totalLines": 375,
-    "codeLines": 320,
+    "files": 25,
+    "totalLines": 1776,
+    "codeLines": 1525,
     "breakdown": {
       "frontend": {
-        "files": 5,
-        "codeLines": 276
+        "files": 18,
+        "codeLines": 1165
       },
       "backend": {
         "files": 0,
         "codeLines": 0
       },
       "shared": {
-        "files": 2,
-        "codeLines": 44
+        "files": 7,
+        "codeLines": 360
       }
     }
   },
   "quality": {
     "engine": "ast2",
-    "score": 92,
+    "score": 100,
     "grade": "A+",
     "cognitive": {
-      "avg": 0.7,
-      "p90": 4,
-      "max": 6,
+      "avg": 1.1,
+      "p90": 5,
+      "max": 9,
       "over15": 0,
       "over25": 0,
       "worst": [
         {
-          "name": "handleCalculate",
-          "cog": 6,
-          "cc": 11,
-          "file": "src/App.tsx",
-          "line": 33
+          "name": "IncomeCheckResult",
+          "cog": 9,
+          "cc": 8,
+          "file": "src/components/IncomeCheckResult.tsx",
+          "line": 22
         },
         {
-          "name": "IncomeInputForm",
-          "cog": 4,
-          "cc": 5,
-          "file": "src/components/IncomeInputForm.tsx",
-          "line": 21
+          "name": "deriveIncomeCheck",
+          "cog": 9,
+          "cc": 10,
+          "file": "src/lib/incomeCheck.ts",
+          "line": 38
+        },
+        {
+          "name": "TargetIncomeLookup",
+          "cog": 8,
+          "cc": 9,
+          "file": "src/components/TargetIncomeLookup.tsx",
+          "line": 34
         },
         {
           "name": "(anonymous)",
-          "cog": 2,
-          "cc": 3,
-          "file": "src/components/IncomeResult.tsx",
-          "line": 41
+          "cog": 7,
+          "cc": 8,
+          "file": "src/components/HouseholdSizePicker.tsx",
+          "line": 22
         },
         {
-          "name": "CalculatorShell",
-          "cog": 1,
-          "cc": 2,
-          "file": "src/App.tsx",
-          "line": 25
-        },
-        {
-          "name": "combineDualIncome",
-          "cog": 1,
-          "cc": 2,
-          "file": "src/lib/incomeCalc.ts",
-          "line": 3
+          "name": "IncomeDistributionRuler",
+          "cog": 7,
+          "cc": 7,
+          "file": "src/components/IncomeDistributionRuler.tsx",
+          "line": 40
         }
       ]
     },
     "duplication": {
-      "percent": 6.1,
-      "dupTokens": 110,
-      "totalTokens": 1804,
-      "blocks": 6,
-      "worstFiles": [
-        {
-          "file": "src/components/IncomeResult.tsx",
-          "dupTokens": 110
-        }
-      ],
-      "worstBlocks": [
-        [
-          "src/components/IncomeResult.tsx:20",
-          "src/components/IncomeResult.tsx:26"
-        ],
-        [
-          "src/components/IncomeResult.tsx:21",
-          "src/components/IncomeResult.tsx:27"
-        ],
-        [
-          "src/components/IncomeResult.tsx:21",
-          "src/components/IncomeResult.tsx:27"
-        ]
-      ]
+      "percent": 0,
+      "dupTokens": 0,
+      "totalTokens": 6714,
+      "blocks": 0,
+      "worstFiles": [],
+      "worstBlocks": []
+    },
+    "io": {
+      "readers": 0,
+      "uncachedReaders": 0,
+      "loopSites": 0,
+      "uncachedLoopSites": 0,
+      "worst": []
+    },
+    "renderGates": {
+      "hostages": 0,
+      "worst": []
     },
     "cc": {
-      "functions": 20,
-      "avg": 1.9,
+      "functions": 80,
+      "avg": 2,
       "p90": 5,
-      "max": 11,
-      "over10": 1,
+      "max": 10,
+      "over10": 0,
       "over20": 0,
       "worst": [
         {
-          "name": "handleCalculate",
-          "cc": 11,
-          "file": "src/App.tsx",
-          "line": 33
+          "name": "deriveIncomeCheck",
+          "cc": 10,
+          "file": "src/lib/incomeCheck.ts",
+          "line": 38
         },
         {
-          "name": "IncomeInputForm",
-          "cc": 5,
-          "file": "src/components/IncomeInputForm.tsx",
-          "line": 21
+          "name": "TargetIncomeLookup",
+          "cc": 9,
+          "file": "src/components/TargetIncomeLookup.tsx",
+          "line": 34
         },
         {
           "name": "(anonymous)",
-          "cc": 3,
-          "file": "src/components/IncomeResult.tsx",
-          "line": 41
+          "cc": 8,
+          "file": "src/components/HouseholdSizePicker.tsx",
+          "line": 22
         },
         {
-          "name": "CalculatorShell",
-          "cc": 2,
-          "file": "src/App.tsx",
-          "line": 25
+          "name": "IncomeCheckResult",
+          "cc": 8,
+          "file": "src/components/IncomeCheckResult.tsx",
+          "line": 22
         },
         {
-          "name": "combineDualIncome",
-          "cc": 2,
-          "file": "src/lib/incomeCalc.ts",
-          "line": 3
+          "name": "IncomeDistributionRuler",
+          "cc": 7,
+          "file": "src/components/IncomeDistributionRuler.tsx",
+          "line": 40
         }
       ]
     },
-    "branchDensity": 5.9,
-    "branches": 19,
-    "functions": 27,
-    "avgFileLines": 46,
+    "branchDensity": 6.2,
+    "branches": 94,
+    "functions": 93,
+    "avgFileLines": 61,
     "longFiles": 0,
     "maxFile": {
-      "path": "src/components/IncomeInputForm.tsx",
-      "lines": 100
+      "path": "src/data/welfarePrograms.ts",
+      "lines": 173
     }
   },
   "kit": {
     "features": [
       {
         "name": "Watermark",
-        "loc": 188,
+        "loc": 190,
         "category": "component"
       },
       {
         "name": "InAppSheet",
-        "loc": 175,
+        "loc": 177,
+        "category": "component"
+      },
+      {
+        "name": "Select",
+        "loc": 109,
+        "category": "component"
+      },
+      {
+        "name": "Dialog",
+        "loc": 98,
+        "category": "component"
+      },
+      {
+        "name": "Collapsible",
+        "loc": 94,
         "category": "component"
       },
       {
@@ -164,17 +172,12 @@
       },
       {
         "name": "AppShell",
-        "loc": 76,
+        "loc": 78,
         "category": "component"
       },
       {
         "name": "Field",
         "loc": 67,
-        "category": "component"
-      },
-      {
-        "name": "Button",
-        "loc": 61,
         "category": "component"
       },
       {
@@ -185,6 +188,16 @@
       {
         "name": "SegmentedControl",
         "loc": 49,
+        "category": "component"
+      },
+      {
+        "name": "IconButton",
+        "loc": 45,
+        "category": "component"
+      },
+      {
+        "name": "TabBar",
+        "loc": 44,
         "category": "component"
       },
       {
@@ -208,20 +221,20 @@
         "category": "component"
       }
     ],
-    "savedLines": 869,
-    "savedKB": 34,
-    "savedA4": 11,
-    "savedPercent": 73,
+    "savedLines": 1204,
+    "savedKB": 47,
+    "savedA4": 15,
+    "savedPercent": 44,
     "usage": {
       "component": {
-        "used": 15,
-        "total": 59,
-        "percent": 25
+        "used": 20,
+        "total": 60,
+        "percent": 33
       },
       "hook": {
-        "used": 1,
+        "used": 0,
         "total": 13,
-        "percent": 8
+        "percent": 0
       },
       "util": {
         "used": 0,

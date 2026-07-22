@@ -3,6 +3,7 @@ import { Divider, Field, IconButton, Section, SegmentedControl } from "@m1kapp/k
 import { Info } from "lucide-react";
 import { avgWorkerIncomeRatio, medianIncomeRatio } from "../lib/incomeCalc";
 import { lognormalSigma } from "../lib/incomeDistribution";
+import { won } from "../lib/format";
 import { pensionFeeForWage } from "../data/pension";
 import { 건강보험료율, 급여기준, 기준중위소득, 도시근로자월평균소득, type IncomeYear } from "../data/incomeStandards";
 import { HouseholdSizePicker } from "./HouseholdSizePicker";
@@ -29,10 +30,6 @@ const MEDIAN_PRESETS = [
   ...Object.entries(급여기준).map(([label, value]) => ({ display: `${label} ${value}%`, value })),
   ...GENERIC_PRESETS,
 ];
-
-function won(n: number): string {
-  return `${Math.round(n).toLocaleString()}원`;
-}
 
 export function TargetIncomeLookup({ householdSize, onHouseholdSizeChange, year }: TargetIncomeLookupProps) {
   const [basis, setBasis] = useState<Basis>("median");
