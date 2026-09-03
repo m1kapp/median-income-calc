@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AppShell, AppShellHeader, AppShellContent, SegmentedControl, Select, Tab, TabBar, ToastProvider, Watermark } from "@m1kapp/kit";
+import { AppShell, AppShellHeader, AppShellContent, SegmentedControl, Select, Tab, TabBar, ToastProvider, Watermark, watermarkTint } from "@m1kapp/kit";
 import { BookOpen, Calculator as CalculatorIcon } from "lucide-react";
 import { IncomeCheckLookup } from "./components/IncomeCheckLookup";
 import { SystemInfoPage } from "./components/SystemInfoPage";
@@ -20,7 +20,7 @@ const YEAR_SELECT_OPTIONS = YEARS.map((y) => ({ value: y as IncomeYear, label: `
 
 function Calculator() {
   return (
-    <Watermark color={ACCENT} text="calc" trackSlug={TRACK_SLUG}>
+    <Watermark color={watermarkTint(ACCENT)} text="calc" trackSlug={TRACK_SLUG}>
       <CalculatorShell />
     </Watermark>
   );
