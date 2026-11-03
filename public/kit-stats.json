@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-22T14:12:26.785Z",
-  "kitVersion": "0.0.37",
+  "generatedAt": "2026-11-03T14:47:00.883Z",
+  "kitVersion": "0.0.61",
   "source": {
     "dir": "src",
-    "files": 25,
-    "totalLines": 1776,
-    "codeLines": 1525,
+    "files": 24,
+    "totalLines": 1771,
+    "codeLines": 1522,
     "breakdown": {
       "frontend": {
         "files": 18,
@@ -16,21 +16,24 @@
         "codeLines": 0
       },
       "shared": {
-        "files": 7,
-        "codeLines": 360
+        "files": 6,
+        "codeLines": 357
       }
     }
   },
   "quality": {
     "engine": "ast2",
-    "score": 100,
+    "score": 87,
     "grade": "A+",
+    "gradeBase": "A",
+    "dead": null,
     "cognitive": {
       "avg": 1.1,
       "p90": 5,
       "max": 9,
       "over15": 0,
       "over25": 0,
+      "top10avg": 6.5,
       "worst": [
         {
           "name": "IncomeCheckResult",
@@ -66,16 +69,149 @@
           "cc": 7,
           "file": "src/components/IncomeDistributionRuler.tsx",
           "line": 40
+        },
+        {
+          "name": "bellPath",
+          "cog": 6,
+          "cc": 5,
+          "file": "src/components/IncomeDistributionRuler.tsx",
+          "line": 20
+        },
+        {
+          "name": "IncomeCheckLookup",
+          "cog": 5,
+          "cc": 6,
+          "file": "src/components/IncomeCheckLookup.tsx",
+          "line": 55
+        },
+        {
+          "name": "(anonymous)",
+          "cog": 5,
+          "cc": 5,
+          "file": "src/components/IncomeDistributionRuler.tsx",
+          "line": 111
+        },
+        {
+          "name": "(anonymous)",
+          "cog": 5,
+          "cc": 6,
+          "file": "src/components/IncomeYearChart.tsx",
+          "line": 68
+        },
+        {
+          "name": "IncomeYearChart",
+          "cog": 4,
+          "cc": 5,
+          "file": "src/components/IncomeYearChart.tsx",
+          "line": 29
         }
       ]
+    },
+    "fnLength": {
+      "avg": 12.6,
+      "p90": 35,
+      "max": 92,
+      "over40": 3,
+      "over80": 0,
+      "top10avg": 54.7,
+      "countAll": 79,
+      "count5": 33,
+      "count10": 25,
+      "worst": [
+        {
+          "name": "IncomeCheckResult",
+          "lines": 92,
+          "cog": 9,
+          "file": "src/components/IncomeCheckResult.tsx",
+          "line": 22
+        },
+        {
+          "name": "TargetIncomeLookup",
+          "lines": 90,
+          "cog": 8,
+          "file": "src/components/TargetIncomeLookup.tsx",
+          "line": 34
+        },
+        {
+          "name": "IncomeCheckLookup",
+          "lines": 81,
+          "cog": 5,
+          "file": "src/components/IncomeCheckLookup.tsx",
+          "line": 55
+        },
+        {
+          "name": "CalculatorShell",
+          "lines": 54,
+          "cog": 3,
+          "file": "src/App.tsx",
+          "line": 29
+        },
+        {
+          "name": "IncomeDistributionRuler",
+          "lines": 52,
+          "cog": 7,
+          "file": "src/components/IncomeDistributionRuler.tsx",
+          "line": 40
+        },
+        {
+          "name": "(anonymous)",
+          "lines": 40,
+          "cog": 5,
+          "file": "src/components/IncomeYearChart.tsx",
+          "line": 68
+        },
+        {
+          "name": "IncomeYearChart",
+          "lines": 38,
+          "cog": 4,
+          "file": "src/components/IncomeYearChart.tsx",
+          "line": 29
+        },
+        {
+          "name": "WageHelpSheet",
+          "lines": 35,
+          "cog": 0,
+          "file": "src/components/WageHelpSheet.tsx",
+          "line": 8
+        },
+        {
+          "name": "PensionHelpSheet",
+          "lines": 33,
+          "cog": 0,
+          "file": "src/components/PensionHelpSheet.tsx",
+          "line": 8
+        },
+        {
+          "name": "AccuracyInfoDialog",
+          "lines": 32,
+          "cog": 0,
+          "file": "src/components/AccuracyInfoDialog.tsx",
+          "line": 8
+        }
+      ]
+    },
+    "scoreInputs": {
+      "over15Pct": 0,
+      "over25Pct": 0,
+      "p90Cog": 5,
+      "maxCog": 9,
+      "dupPct": 0,
+      "longFileSeverityPct": 0,
+      "avgFileLines": 63,
+      "fnOver40Pct": 3.8,
+      "fnP90": 35,
+      "fnMax": 92,
+      "fnTop10": 54.7,
+      "cogTop10": 6.5
     },
     "duplication": {
       "percent": 0,
       "dupTokens": 0,
-      "totalTokens": 6714,
+      "totalTokens": 6688,
       "blocks": 0,
       "worstFiles": [],
-      "worstBlocks": []
+      "worstBlocks": [],
+      "variantSkipped": 0
     },
     "io": {
       "readers": 0,
@@ -84,12 +220,94 @@
       "uncachedLoopSites": 0,
       "worst": []
     },
+    "textbook": {
+      "awaitInForEach": {
+        "count": 0,
+        "worst": []
+      },
+      "spreadAccumulator": {
+        "count": 0,
+        "worst": []
+      },
+      "regexInLoop": {
+        "count": 0,
+        "worst": []
+      },
+      "floatingPromise": {
+        "count": 0,
+        "worst": []
+      },
+      "loopInvariantIndex": {
+        "count": 0,
+        "worst": []
+      },
+      "sharedRefFill": {
+        "count": 0,
+        "worst": []
+      },
+      "numericSortNoComparator": {
+        "count": 0,
+        "worst": []
+      },
+      "emptyCatch": {
+        "count": 0,
+        "worst": []
+      },
+      "statefulRegex": {
+        "count": 0,
+        "worst": []
+      },
+      "forInArray": {
+        "count": 0,
+        "worst": []
+      }
+    },
+    "typeSafety": {
+      "tsFiles": 24,
+      "totalAnnots": 295,
+      "anyType": {
+        "count": 0,
+        "pct": 0,
+        "worst": []
+      },
+      "asAny": {
+        "count": 0,
+        "worst": []
+      },
+      "nonNull": {
+        "count": 1,
+        "worst": [
+          {
+            "file": "src/main.tsx",
+            "line": 6,
+            "text": "document.getElementById(\"root\")!"
+          }
+        ]
+      },
+      "tsIgnore": {
+        "count": 0,
+        "worst": []
+      }
+    },
+    "testDensity": {
+      "files": 0,
+      "lines": 0,
+      "percent": null
+    },
+    "quadratic": {
+      "sites": 0,
+      "candidates": 0,
+      "zones": {},
+      "worst": [],
+      "candidateList": [],
+      "files": []
+    },
     "renderGates": {
       "hostages": 0,
       "worst": []
     },
     "cc": {
-      "functions": 80,
+      "functions": 79,
       "avg": 2,
       "p90": 5,
       "max": 10,
@@ -130,8 +348,8 @@
     },
     "branchDensity": 6.2,
     "branches": 94,
-    "functions": 93,
-    "avgFileLines": 61,
+    "functions": 92,
+    "avgFileLines": 63,
     "longFiles": 0,
     "maxFile": {
       "path": "src/data/welfarePrograms.ts",
@@ -142,17 +360,17 @@
     "features": [
       {
         "name": "Watermark",
-        "loc": 190,
+        "loc": 205,
         "category": "component"
       },
       {
         "name": "InAppSheet",
-        "loc": 177,
+        "loc": 194,
         "category": "component"
       },
       {
         "name": "Select",
-        "loc": 109,
+        "loc": 139,
         "category": "component"
       },
       {
@@ -172,7 +390,7 @@
       },
       {
         "name": "AppShell",
-        "loc": 78,
+        "loc": 76,
         "category": "component"
       },
       {
@@ -221,25 +439,25 @@
         "category": "component"
       }
     ],
-    "savedLines": 1204,
-    "savedKB": 47,
-    "savedA4": 15,
-    "savedPercent": 44,
+    "savedLines": 1264,
+    "savedKB": 49,
+    "savedA4": 16,
+    "savedPercent": 45,
     "usage": {
       "component": {
         "used": 20,
-        "total": 60,
-        "percent": 33
+        "total": 64,
+        "percent": 31
       },
       "hook": {
         "used": 0,
-        "total": 13,
+        "total": 14,
         "percent": 0
       },
       "util": {
-        "used": 0,
-        "total": 26,
-        "percent": 0
+        "used": 1,
+        "total": 48,
+        "percent": 2
       }
     }
   }
